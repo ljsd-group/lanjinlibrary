@@ -20,5 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "lanjinlibrary"
-include ':app'
 include ':mylibrary'
