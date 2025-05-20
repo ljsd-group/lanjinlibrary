@@ -44,7 +44,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'ljsd-group'
             artifactId = 'lanjinlibrary'
-            version = '1.0'
+            version = '11'
 
             afterEvaluate {
                 from components.release
