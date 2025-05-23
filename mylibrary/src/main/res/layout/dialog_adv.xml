@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.lanji.mylibrary.view.fullVideoView
+            android:visibility="gone"
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="410dp" />
+        
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="410dp">
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/image"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                android:layout_height="match_parent"></ImageView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/recycler_view"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+        </FrameLayout>
+<!--        <com.youth.banner.Banner-->
+<!--            android:id="@+id/banner_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            android:layout_height="410dp"-->
+<!--            app:banner_loop_time="3000" />-->
+
+    </FrameLayout>
+
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"></ImageView>
+</LinearLayout>
