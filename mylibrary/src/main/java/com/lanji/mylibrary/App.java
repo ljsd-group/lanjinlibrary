@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import com.appsflyer.AppsFlyerConversionListener;
 import com.appsflyer.AppsFlyerLib;
+import com.lanji.mylibrary.instance.AppEvent;
 import com.lanji.mylibrary.utils.LogUtils;
 
 import java.util.Map;
@@ -18,7 +19,7 @@ public abstract class App extends Application {
         if(!TextUtils.isEmpty(key)){
             ininAppFire(key);
         }
-
+        AppEvent.getInstance().init(this);
     }
 
 

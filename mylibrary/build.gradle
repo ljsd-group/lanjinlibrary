@@ -48,6 +48,11 @@ dependencies {
     api platform('com.google.firebase:firebase-bom:31.5.0')
     api 'com.google.firebase:firebase-analytics'
     api 'com.google.firebase:firebase-messaging'
+
+    api 'com.google.code.gson:gson:2.10'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 }
 publishing {
     publications {

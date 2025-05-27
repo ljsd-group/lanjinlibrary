@@ -17,11 +17,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.lanji.library.ui.theme.LanjinlibraryTheme
 import com.lanji.mylibrary.dialog.AdvDialog
-import com.lanji.mylibrary.loadingdialog.MProgressDialog
+import com.lanji.mylibrary.model.ParmModel
+import com.lanji.mylibrary.network.MainDialogRequest
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        val parm = ParmModel();
+        parm.method = "get"
+        parm.url = "api/system/image/imageGroupList"
+
+        MainDialogRequest.Builder().setContext(this).setUrl("https://auth0.ljsdstage.top/api/proxy/common")
+            .setBody(parm).setAuthCode("").build().startRequest()
         enableEdgeToEdge()
         setContent {
             LanjinlibraryTheme {

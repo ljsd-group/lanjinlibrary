@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "693784164082",
+    "project_id": "oceanic-hold-459006-g1",
+    "storage_bucket": "oceanic-hold-459006-g1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693784164082:android:a025f60cb032e4676f026b",
+        "android_client_info": {
+          "package_name": "com.lanjin.virtuai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693784164082-nkpijuh04mvjebj5i27haj527egeip05.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lanjin.virtuai",
+            "certificate_hash": "b7ea7b6f62efe45863b930eae1a095f0e4cebda9"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbtOO9QX5iy_LvYOJbZsRsH3pD4cG9O5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

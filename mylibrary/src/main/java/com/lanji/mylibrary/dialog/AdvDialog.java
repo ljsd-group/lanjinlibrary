@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.lanji.mylibrary.R;
+import com.lanji.mylibrary.instance.AppEvent;
 import com.lanji.mylibrary.interfaces.DialogCallBack;
 
 public class AdvDialog extends Dialog {
@@ -71,8 +72,9 @@ public class AdvDialog extends Dialog {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(mDialogCallBack!=null)
-                        mDialogCallBack.clickCallBack();
+//                    if(mDialogCallBack!=null)
+//                        mDialogCallBack.clickCallBack();
+                    AppEvent.getInstance().addEvent("main_dialog");
                     Uri uri = Uri.parse(jumpUrl);
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     getContext().startActivity(intent);

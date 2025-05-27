@@ -1,0 +1,25 @@
+[
+  {
+    "eventName": "main_dialog",
+    "eventType": [
+      {
+        "typeName": "appfire",
+        "eventParams": [
+          {
+            "paramsKey": "key",
+            "paramsValue": "value"
+          }
+        ]
+      },
+      {
+        "typeName": "firebase",
+        "eventParams": [
+          {
+            "paramsKey": "key",
+            "paramsValue": "value"
+          }
+        ]
+      }
+    ]
+  }
+]
