@@ -1,0 +1,168 @@
+name: 'Pull Request审核检查'
+on:
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+  pull_request:
+    types: [opened, reopened, labeled, unlabeled, synchronize, review_requested, review_request_removed]
+    branches:
+      - master
+
+jobs:
+  check-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检查PR是否有管理员审核
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // 获取PR信息
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+            
+            // 如果PR不是针对��支，则跳过检查
+            if (pr.base.ref !== 'main') {
+              console.log('这不是针对��支的PR，跳过检查');
+              return;
+            }
+            
+            // 获取所有审核
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+            
+            // 管理员用户名
+            const adminUser = 'hypier';
+            
+            // 获取每个用户的最新审核状态
+            const reviewsByUser = {};
+            reviews.forEach(review => {
+              reviewsByUser[review.user.login] = review;
+            });
+            
+            // 检查管理员是否批准
+            const adminApproved = reviewsByUser[adminUser] && reviewsByUser[adminUser].state === 'APPROVED';
+            
+            // 设置检查结果
+            if (!adminApproved) {
+              core.setFailed('此PR需要hypier管理员审核并批准才能合并到��支');
+            } else {
+              console.log('PR已获得hypier管理员批准，可以合并');
+            }
+      
+      - name: 更新PR状态和添加通知
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // 获取PR信息
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+            
+            // 获取所有审核
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+            
+            // 管理员用户名
+            const adminUser = 'hypier';
+            
+            // 获取每个用户的最新审核状态
+            const reviewsByUser = {};
+            reviews.forEach(review => {
+              reviewsByUser[review.user.login] = review;
+            });
+            
+            // 检查管理员是否批准
+            const adminApproved = reviewsByUser[adminUser] && reviewsByUser[adminUser].state === 'APPROVED';
+            
+            // 创建状态检查
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: pr.head.sha,
+              state: adminApproved ? 'success' : 'pending',
+              description: adminApproved ? `已获得hypier管理员批准` : '需要hypier管理员审核批准',
+              context: '管理员审核检查'
+            });
+            
+            // 添加标签
+            const needReviewLabel = '需要审核';
+            const approvedLabel = '已审核';
+            
+            const { data: labels } = await github.rest.issues.listLabelsOnIssue({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            
+            const hasNeedReviewLabel = labels.some(label => label.name === needReviewLabel);
+            const hasApprovedLabel = labels.some(label => label.name === approvedLabel);
+            
+            try {
+              if (!adminApproved && !hasNeedReviewLabel) {
+                // 添加需要审核标签
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  labels: [needReviewLabel]
+                });
+                
+                // 如果有已审核标签，移除它
+                if (hasApprovedLabel) {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: context.issue.number,
+                    name: approvedLabel
+                  });
+                }
+              } else if (adminApproved && !hasApprovedLabel) {
+                // 添加已审核标签
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  labels: [approvedLabel]
+                });
+                
+                // 如果有需要审核标签，移除它
+                if (hasNeedReviewLabel) {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: context.issue.number,
+                    name: needReviewLabel
+                  });
+                }
+              }
+            } catch (error) {
+              console.log('标签操作错误，可能是标签不存在: ' + error.message);
+            }
+            
+            // 如果是新PR或新的审核，添加评论
+            if (github.context.payload.action === 'opened' || 
+                github.context.payload.action === 'submitted') {
+              const commentBody = adminApproved 
+                ? `✅ 此PR已获得管理员 @hypier 的批准，可以合并到��支。`
+                : `⚠️ 此PR需要管理员 @hypier 审核批准才能合并到��支。`;
+              
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: commentBody
+              });
+            }

@@ -1,0 +1,60 @@
+name: '创建必要的标签'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/create-labels.yml'
+
+jobs:
+  create-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 创建标签
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // 定义要创建的标签
+            const labels = [
+              {
+                name: '需要审核',
+                color: 'fbca04', // 黄色
+                description: '此PR需要管理员审核'
+              },
+              {
+                name: '已审核',
+                color: '0e8a16', // 绿色
+                description: '此PR已通过管理员审核'
+              }
+            ];
+            
+            // 获取现有标签
+            const { data: existingLabels } = await github.rest.issues.listLabelsForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            
+            const existingLabelNames = existingLabels.map(label => label.name);
+            
+            // 创建不存在的标签
+            for (const label of labels) {
+              if (!existingLabelNames.includes(label.name)) {
+                try {
+                  await github.rest.issues.createLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: label.name,
+                    color: label.color,
+                    description: label.description
+                  });
+                  console.log(`创建标签: ${label.name}`);
+                } catch (error) {
+                  console.log(`创建标签 ${label.name} 失败: ${error.message}`);
+                }
+              } else {
+                console.log(`标签已存在: ${label.name}`);
+              }
+            }
