@@ -5,7 +5,7 @@ on:
   pull_request:
     types: [opened, reopened, labeled, unlabeled, synchronize, review_requested, review_request_removed]
     branches:
-      - master
+      - main
 
 jobs:
   check-reviews:
@@ -23,9 +23,9 @@ jobs:
               pull_number: context.issue.number
             });
             
-            // 如果PR不是针对��支，则跳过检查
+            // 如果PR不是针对main分支，则跳过检查
             if (pr.base.ref !== 'main') {
-              console.log('这不是针对��支的PR，跳过检查');
+              console.log('这不是针对main分支的PR，跳过检查');
               return;
             }
             
@@ -50,7 +50,7 @@ jobs:
             
             // 设置检查结果
             if (!adminApproved) {
-              core.setFailed('此PR需要hypier管理员审核并批准才能合并到��支');
+              core.setFailed('此PR需要hypier管理员审核并批准才能合并到main分支');
             } else {
               console.log('PR已获得hypier管理员批准，可以合并');
             }
@@ -156,8 +156,8 @@ jobs:
             if (github.context.payload.action === 'opened' || 
                 github.context.payload.action === 'submitted') {
               const commentBody = adminApproved 
-                ? `✅ 此PR已获得管理员 @hypier 的批准，可以合并到��支。`
-                : `⚠️ 此PR需要管理员 @hypier 审核批准才能合并到��支。`;
+                ? `✅ 此PR已获得管理员 @hypier 的批准，可以合并到main分支。`
+                : `⚠️ 此PR需要管理员 @hypier 审核批准才能合并到main分支。`;
               
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
