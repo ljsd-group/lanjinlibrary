@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="privacy_policy"> سياسة الخصوصية </string>
+    <string name="login_tip">مساعدك الذكي الشخصي</string>
+    <string name="login_apple">تسجيل الدخول باستخدام Apple</string>
+    <string name="login_google">تسجيل الدخول باستخدام Google</string>
+    <string name="login_xieyi">بالتسجيل، أنت توافق على</string>
+
+</resources>

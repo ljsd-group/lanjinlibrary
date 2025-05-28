@@ -2,12 +2,15 @@ package com.lanji.mylibrary.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
 import java.util.Base64;
+import java.util.Locale;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -69,5 +72,23 @@ public class Method {
             e.printStackTrace();
         }
         return "";
+    }
+    public static Context getLLL(Context cc){
+        String language =getLaun(cc);
+        Configuration config = cc.getResources().getConfiguration();
+        config.setLocale(new Locale(language));
+        Context context = cc.createConfigurationContext(config);
+        return context;
+    }
+    public static void saveLaun(Context context, String laun) {
+        SharedPreferences sp = context.getSharedPreferences("STOCK_LANJIN_LAUN", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("stock_view_laun", laun);
+        editor.commit();
+    }
+
+    public static String getLaun(Context context) {
+        SharedPreferences sp = context.getSharedPreferences("STOCK_LANJIN_LAUN", Context.MODE_PRIVATE);
+        return sp.getString("stock_view_laun",  Locale.getDefault().getLanguage());
     }
 }

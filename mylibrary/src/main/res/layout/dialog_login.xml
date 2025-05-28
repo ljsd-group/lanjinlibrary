@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/viewback"
+    android:layout_height="match_parent"
+    android:background="@drawable/icon_login_bac">
+
+    <FrameLayout
+        android:id="@+id/backlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="40dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/backimage"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_gravity="center"
+            android:src="@drawable/arrow_left" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_marginTop="40dp"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:layout_gravity="center_horizontal"
+        android:text="11111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/login_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <LinearLayout
+        android:id="@+id/layoutapple"
+        android:layout_marginTop="220dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/shape_login_apple"
+        android:layout_width="match_parent"
+        android:layout_height="52dp">
+
+        <ImageView
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_apple"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+
+        <TextView
+            android:id="@+id/textapple"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="#222222"
+            android:textSize="17sp"
+            android:text="@string/login_apple"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/googlelogin"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/shape_login_google"
+        android:layout_width="match_parent"
+        android:layout_height="52dp">
+
+        <ImageView
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_login_google"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+
+        <TextView
+            android:id="@+id/textgoogle"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            android:text="@string/login_google"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/policy"
+        android:textSize="16sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

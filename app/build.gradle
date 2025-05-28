@@ -16,6 +16,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [auth0Domain: "dev-l088mznni36phook.us.auth0.com", auth0Scheme: "demo",
+                                auth0ClientId:"7nqR1g9h8U9AWu5bCtz1QuAUFF2TMzBb"]
+
     }
 
     buildTypes {

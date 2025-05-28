@@ -84,7 +84,7 @@ public class MainDialogRequest {
                 if (response.isSuccessful()) {
                     AdversData responseHome = response.body();
                     if (responseHome != null && responseHome.code == 200) {
-                        if (responseHome.list != null && responseHome.list.size() > 0) {
+                        if (responseHome.list != null && !responseHome.list.isEmpty()) {
                             List<AdversData.Data> list = responseHome.list;
                             if (list.get(0).showType == 0) {
                                 AdvDialog dialog = new AdvDialog(context);

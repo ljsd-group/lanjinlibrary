@@ -4,4 +4,17 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <application>
+
+        <meta-data
+            android:name="AUTH0_DOMAIN"
+            android:value="${auth0Domain}" />
+
+        <meta-data
+            android:name="AUTH0_SCHEME"
+            android:value="${auth0Scheme}" />
+        <meta-data
+            android:name="AUTH0_CLIENTID"
+            android:value="${auth0ClientId}" />
+    </application>
 </manifest>
