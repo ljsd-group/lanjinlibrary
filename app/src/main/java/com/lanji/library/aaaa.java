@@ -1,6 +1,8 @@
 package com.lanji.library;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
+import android.view.View;
 import android.widget.TextView;
 
 import com.lanji.mylibrary.base.BaseActivity;
@@ -20,4 +22,5 @@ public class aaaa extends BaseActivity {
     public void initView() {
         textView.setText("111111111111");
     }
+
 }
