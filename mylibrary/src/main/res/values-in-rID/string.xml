@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+    <string name="login_tip">Pembantu Pintar Anda</string>
+    <string name="login_apple">Masuk dengan Apple</string>
+    <string name="login_google">Masuk dengan Google</string>
+    <string name="login_xieyi">Daftar berarti Anda setuju dengan Syarat dan Ketentuan serta Kebijakan Privasi kami</string>
+
+</resources>

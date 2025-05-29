@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="privacy_policy">Politique de confidentialité</string>
+    <string name="login_tip">Créer des possibilités illimitées</string>
+    <string name="login_apple">Se Connecter avec Apple</string>
+    <string name="login_google">Se Connecter avec Google</string>
+    <string name="login_xieyi">En vous inscrivant, vous acceptez les Conditions d\'Utilisation et la Politique de Confidentialité</string>
+
+</resources>

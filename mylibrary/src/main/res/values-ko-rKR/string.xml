@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="privacy_policy">개인정보 보호정책</string>
+    <string name="login_tip">무한한 가능성을 창출하다</string>
+    <string name="login_apple">Apple로 로그인</string>
+    <string name="login_google">Google로 로그인</string>
+    <string name="login_xieyi">가입함으로써 이용약관 및 개인정보 처리방침에 동의하는 것으로 간주됩니다</string>
+
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="privacy_policy">Datenschutzbestimmungen</string>
+    <string name="login_tip">Unbegrenzte Möglichkeiten schaffen</string>
+    <string name="login_apple">Mit Apple einloggen</string>
+    <string name="login_google">Mit Google einloggen</string>
+    <string name="login_xieyi">Indem Sie sich anmelden, akzeptieren Sie die Nutzungsbedingungen und die Datenschutzerklärung</string>
+
+</resources>

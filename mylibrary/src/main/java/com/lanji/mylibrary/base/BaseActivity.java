@@ -1,10 +1,27 @@
 package com.lanji.mylibrary.base;
 
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.lanji.mylibrary.R;
+import com.lanji.mylibrary.inject.ViewUtils;
 import com.lanji.mylibrary.loadingdialog.MProgressDialog;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_ZhiHuiShiTang);
+        setContentView(getLayoutId());
+        ViewUtils.inject(this);
+        initView();
+    }
+
+    public abstract int getLayoutId();
+    public  abstract void initView();
 
 
     public MProgressDialog mLoadingDialog;
