@@ -29,25 +29,16 @@ class MainActivity : ComponentActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v=LoginDialog(this, com.lanji.mylibrary.R.layout.dialog_login,object : LoginDataCallBack{
-            override fun getPolicyLink(): String? {
-                return null;
-            }
+       val  v=LogincreenDialog(this, object : LoginDataCallBack {
+           override fun getPolicyLink(): String? {
+               return null
+           }
 
-            override fun onSuccess(accToken: String?) {
-            }
-        })
-        v.show()
-//       val  v=LogincreenDialog(this, object : LoginDataCallBack {
-//           override fun getPolicyLink(): String? {
-//               return null
-//           }
-//
-//           override fun onSuccess(accToken: String?) {
-//           }
-//
-//       })
-//v.show()
+           override fun onSuccess(accToken: String?) {
+           }
+
+       })
+v.show()
 //        val parm = ParmModel();
 //        parm.method = "get"
 //        parm.url = "api/system/image/imageGroupList"
