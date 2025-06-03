@@ -6,8 +6,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lanji.mylibrary.base.BaseActivity;
+import com.lanji.mylibrary.dialog.LoginDialog;
 import com.lanji.mylibrary.inject.ViewInject;
 import com.lanji.library.R;
+import com.lanji.mylibrary.interfaces.LoginCallBack;
+import com.lanji.mylibrary.interfaces.LoginDataCallBack;
 
 public class aaaa extends BaseActivity {
     @Override
@@ -21,6 +24,20 @@ public class aaaa extends BaseActivity {
     @Override
     public void initView() {
         textView.setText("111111111111");
+
+        LoginDialog v= new LoginDialog(this, com.lanji.mylibrary.R.layout.dialog_login, new LoginCallBack() {
+
+            @Override
+            public void onSuccess(String accToken) {
+
+            }
+
+            @Override
+            public void onError(String errorMsg) {
+
+            }
+        });
+        v.show();
     }
 
 }
