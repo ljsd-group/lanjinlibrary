@@ -28,6 +28,11 @@ public class aaaa extends BaseActivity {
         LoginDialog v= new LoginDialog(this, com.lanji.mylibrary.R.layout.dialog_login, new LoginCallBack() {
 
             @Override
+            public void onStart() {
+
+            }
+
+            @Override
             public void onSuccess(String accToken) {
 
             }

@@ -83,7 +83,7 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
     }
 
     private void login(String type) {
-
+        mLoginDataCallBack.onStart();
         try {
             ApplicationInfo actInfo = getContext().getPackageManager().getApplicationInfo(
                     getContext().getPackageName(), PackageManager.GET_META_DATA);
@@ -95,7 +95,7 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
             LogUtils.i("auth0: scheme=" + scheme + " domain=" + domain + ",clientId=" + clientId);
 
             if (TextUtils.isEmpty(domain) || TextUtils.isEmpty(clientId) || TextUtils.isEmpty(scheme)) {
-
+                mLoginDataCallBack.onError("domain,clientId,scheme is empty");
                 return;
             }
             Auth0 account = Auth0.getInstance(clientId, domain);
@@ -111,10 +111,12 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
                         @Override
                         public void onFailure(@NonNull AuthenticationException e) {
                             LogUtils.i("Auth0 login onFailure " + e.toString());
+                            mLoginDataCallBack.onError("Auth0 login onFailure " + e.toString());
                         }
                     });
-        } catch (PackageManager.NameNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            LogUtils.i("e " + e.toString());
+            mLoginDataCallBack.onError("error " + e.toString());
         }
     }
 
