@@ -9,4 +9,13 @@
     <item type="id" name="login_apple" />
     <item type="id" name="login_cancle" />
     <item type="id" name="login_policy_url" />
+
+
+    <item type="id" name="app_header_left_view" />
+    <item type="id" name="app_header_left_image" />
+    <item type="id" name="app_header_left_text" />
+    <item type="id" name="app_header_title" />
+    <item type="id" name="app_header_right_view" />
+    <item type="id" name="app_header_right_image" />
+    <item type="id" name="app_header_right_text" />
 </resources>
