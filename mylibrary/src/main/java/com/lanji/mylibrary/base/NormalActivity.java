@@ -47,25 +47,27 @@ public abstract class NormalActivity extends Base2Activity {
             mImageLeft = view.findViewById(R.id.app_header_left_image);
             mTextViewLeft = view.findViewById(R.id.app_header_left_text);
             mLayoutLeft = view.findViewById(R.id.app_header_left_view);
-            mLayoutLeft.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mLeftLayoutCallBack != null) {
-                        mLeftLayoutCallBack.LeftClick();
-                    } else
-                        finish();
-                }
-            });
+            if (mLayoutLeft != null)
+                mLayoutLeft.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mLeftLayoutCallBack != null) {
+                            mLeftLayoutCallBack.LeftClick();
+                        } else
+                            finish();
+                    }
+                });
             mTextViewTitle = view.findViewById(R.id.app_header_title);
             mImageRight = view.findViewById(R.id.app_header_right_image);
             mTextViewRight = view.findViewById(R.id.app_header_right_text);
             mLayoutRight = view.findViewById(R.id.app_header_right_view);
-            mLayoutRight.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mRightLayoutCallBack != null) mRightLayoutCallBack.RightClick();
-                }
-            });
+            if (mLayoutRight != null)
+                mLayoutRight.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mRightLayoutCallBack != null) mRightLayoutCallBack.RightClick();
+                    }
+                });
         }
         View view = getLayoutInflater().inflate(R.layout.layout_content, mBaseLayout);
         mBaseContent = view.findViewById(R.id.base_content);
@@ -115,8 +117,10 @@ public abstract class NormalActivity extends Base2Activity {
     }
 
     public void setRightImage(int drawable) {
-        if (mImageRight != null)
+        if (mImageRight != null) {
             mImageRight.setImageResource(drawable);
+            mImageRight.setVisibility(VISIBLE);
+        }
     }
 
     public void setRightText(String leftText) {
