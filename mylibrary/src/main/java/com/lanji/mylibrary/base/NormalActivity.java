@@ -3,7 +3,6 @@ package com.lanji.mylibrary.base;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -11,14 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.lanji.mylibrary.R;
 import com.lanji.mylibrary.inject.ViewUtils;
 import com.lanji.mylibrary.interfaces.LeftLayoutCallBack;
 import com.lanji.mylibrary.interfaces.RightLayoutCallBack;
-import com.lanji.mylibrary.loadingdialog.MProgressDialog;
 
 
 /*
@@ -27,7 +24,7 @@ import com.lanji.mylibrary.loadingdialog.MProgressDialog;
  * 作者：Xiao
  */
 
-public abstract class NormalActivity extends AppCompatActivity {
+public abstract class NormalActivity extends Base2Activity {
     private FrameLayout mBaseContent;
     protected LinearLayout mBaseLayout;
 
@@ -37,15 +34,11 @@ public abstract class NormalActivity extends AppCompatActivity {
     private RightLayoutCallBack mRightLayoutCallBack;
     private LeftLayoutCallBack mLeftLayoutCallBack;
     private View mLayoutProgressBar;
-    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.Theme_ZhiHuiShiTang);
         setContentView(R.layout.layout_base);
-        mContext=this;
-        setDarkStatusWhite(getStatusBarWhite());
 
         mBaseLayout = findViewById(R.id.base_layout);
         int headId = getHeadView();
@@ -174,59 +167,4 @@ public abstract class NormalActivity extends AppCompatActivity {
         this.mRightLayoutCallBack = mRightLayoutCallBack;
     }
 
-    public boolean getStatusBarWhite() {
-        return true;
-    }
-
-    private MProgressDialog mLoadingDialog;
-    private boolean isCancelable = false;
-
-    public  void showDialog() {
-        showDialog(false);
-    }
-
-
-    public final void showDialog(boolean iscancle) {
-        isCancelable = iscancle;
-        if (mLoadingDialog == null) {
-            try {
-                mLoadingDialog = new MProgressDialog(this);
-                mLoadingDialog.setCanceledOnTouchOutside(isCancelable);
-                mLoadingDialog.showNoText();
-            } catch (Exception e) {
-                // TODO: handle exception
-            }
-        } else {
-            mLoadingDialog.showNoText();
-        }
-    }
-
-    /**
-     * 取消加载对话框
-     */
-    public final void closeDialog() {
-        try {
-            if (mLoadingDialog != null) mLoadingDialog.dismiss();
-            isCancelable = false;
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * bDark   true   黑色     false   白色
-     */
-    public void setDarkStatusWhite(boolean bDark) {
-        View decorView = getWindow().getDecorView();
-        //修改状态栏颜色只需要这行代码
-        getWindow().setStatusBarColor(getResources().getColor(android.R.color.white));//这里对应的是状态栏的颜色，就是style中colorPrimaryDark的颜色
-        int vis = decorView.getSystemUiVisibility();
-        if (bDark) {
-            vis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        } else {
-            vis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        }
-        decorView.setSystemUiVisibility(vis);
-    }
 }
