@@ -41,7 +41,7 @@ public abstract class NormalFragment extends Fragment {
         mBaseContent = view2.findViewById(R.id.base_content);
         View view = getLayoutInflater().inflate(getLayoutId(),null);
         mBaseContent.addView(view);
-        ViewUtils.inject(view2);
+        ViewUtils.inject(this,view2);
         return view2;
     }
 

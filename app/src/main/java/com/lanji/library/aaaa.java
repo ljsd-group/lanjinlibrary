@@ -29,6 +29,12 @@ public class aaaa extends Base2Activity {
         setContentView(R.layout.aaaa);
         textViewl.setText("ddddddd");
         LogUtils.i("ssss"+(mContext==null));
+
+                FragmentManager fManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fManager.beginTransaction();
+        bbb v = new bbb();
+        transaction.add(R.id.fragment1, v);
+        transaction.commitAllowingStateLoss();
     }
     //    @Override
 //    public int getLayoutId() {
