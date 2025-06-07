@@ -4,11 +4,9 @@ package com.lanji.library;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.lanji.mylibrary.base.Base2Activity;
 import com.lanji.mylibrary.base.NormalActivity;
 import com.lanji.mylibrary.inject.ViewInject;
 import com.lanji.mylibrary.utils.LogUtils;

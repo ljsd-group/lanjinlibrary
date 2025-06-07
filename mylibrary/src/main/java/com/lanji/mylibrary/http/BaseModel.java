@@ -8,9 +8,9 @@ public class BaseModel implements Serializable {
 
     @Override
     public String toString() {
-        return "Model{" +
-                "code=" + code +
-                ", message='" + message + '\'' +
+        return "{" +
+                "\"code\":" + code +
+                ", \"message\":\"" + message + '\"' +
                 '}';
     }
 }
