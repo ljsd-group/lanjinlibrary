@@ -9,21 +9,22 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.lanji.mylibrary.base.Base2Activity;
+import com.lanji.mylibrary.base.NormalActivity;
 import com.lanji.mylibrary.inject.ViewInject;
 import com.lanji.mylibrary.utils.LogUtils;
 
-public class aaaa extends Base2Activity {
+public class aaaa extends NormalActivity {
     @ViewInject(R.id.text)
     TextView textViewl;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.aaaa);
+    public void addViewIntoContent(Bundle bundle) {
+        addView(R.layout.aaaa);
         textViewl.setText("ddddddd");
         LogUtils.i("ssss"+(mContext==null));
 
 
-                FragmentManager fManager = getSupportFragmentManager();
+        FragmentManager fManager = getSupportFragmentManager();
         FragmentTransaction transaction = fManager.beginTransaction();
         bbb v = new bbb();
         transaction.add(R.id.fragment1, v);
