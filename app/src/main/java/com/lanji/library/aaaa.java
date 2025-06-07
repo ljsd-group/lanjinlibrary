@@ -1,9 +1,7 @@
 package com.lanji.library;
 
-import android.annotation.SuppressLint;
-import android.os.Build;
+
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -11,13 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.lanji.mylibrary.base.Base2Activity;
-import com.lanji.mylibrary.base.BaseActivity;
-import com.lanji.mylibrary.base.NormalActivity;
-import com.lanji.mylibrary.dialog.LoginDialog;
 import com.lanji.mylibrary.inject.ViewInject;
-import com.lanji.library.R;
-import com.lanji.mylibrary.interfaces.LoginCallBack;
-import com.lanji.mylibrary.interfaces.LoginDataCallBack;
 import com.lanji.mylibrary.utils.LogUtils;
 
 public class aaaa extends Base2Activity {
@@ -29,6 +21,7 @@ public class aaaa extends Base2Activity {
         setContentView(R.layout.aaaa);
         textViewl.setText("ddddddd");
         LogUtils.i("ssss"+(mContext==null));
+
 
                 FragmentManager fManager = getSupportFragmentManager();
         FragmentTransaction transaction = fManager.beginTransaction();
