@@ -20,7 +20,7 @@ public class aaaa extends NormalActivity {
         addView(R.layout.aaaa);
         textViewl.setText("ddddddd");
         LogUtils.i("ssss"+(mContext==null));
-
+showProgressBar();
 
         FragmentManager fManager = getSupportFragmentManager();
         FragmentTransaction transaction = fManager.beginTransaction();
