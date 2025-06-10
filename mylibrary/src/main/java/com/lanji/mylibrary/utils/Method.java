@@ -74,21 +74,16 @@ public class Method {
         return "";
     }
     public static Context getLLL(Context cc){
-        String language =getLaun(cc);
+        String language =getLanguage(cc);
         Configuration config = cc.getResources().getConfiguration();
         config.setLocale(new Locale(language));
-        Context context = cc.createConfigurationContext(config);
-        return context;
+        return cc.createConfigurationContext(config);
     }
-    public static void saveLaun(Context context, String laun) {
-        SharedPreferences sp = context.getSharedPreferences("STOCK_LANJIN_LAUN", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("stock_view_laun", laun);
-        editor.commit();
+    public static void saveLanguage(Context context, String laun) {
+        SharedUtil.getInstance(context).putString(Constant.DEAUFLT_LAUNAGE,laun);
     }
 
-    public static String getLaun(Context context) {
-        SharedPreferences sp = context.getSharedPreferences("STOCK_LANJIN_LAUN", Context.MODE_PRIVATE);
-        return sp.getString("stock_view_laun",  Locale.getDefault().getLanguage());
+    public static String getLanguage(Context context) {
+        return  SharedUtil.getInstance(context).getString(Constant.DEAUFLT_LAUNAGE,Locale.getDefault().getLanguage());
     }
 }

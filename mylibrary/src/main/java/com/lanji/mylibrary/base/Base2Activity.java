@@ -11,6 +11,7 @@ import com.lanji.mylibrary.R;
 import com.lanji.mylibrary.inject.ViewUtils;
 import com.lanji.mylibrary.loadingdialog.MProgressDialog;
 import com.lanji.mylibrary.utils.LogUtils;
+import com.lanji.mylibrary.utils.Method;
 
 public class Base2Activity extends AppCompatActivity {
     public Context mContext;
@@ -23,7 +24,12 @@ public class Base2Activity extends AppCompatActivity {
         mContext = this;
         LogUtils.i("---->" + getClass().getSimpleName());
     }
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        String lan= Method.getLanguage(newBase);
+        LogUtils.i("attachBaseContext lan:"+lan);
+        super.attachBaseContext(Method.getLLL(newBase));
+    }
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
