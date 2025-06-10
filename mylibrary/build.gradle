@@ -68,3 +68,70 @@ publishing {
         }
     }
 }
+
+task generateEventConstants {
+    group = 'build'
+    description = 'Generates EventConstants.java from event.json'
+
+    doLast {
+        // 从 app 模块读取 event.json
+        def appModule = project(':app')
+        def sourceDir = file("${appModule.projectDir}/src/main/assets")
+        def eventJsonFile = new File(sourceDir, "event.json")
+
+        if (!eventJsonFile.exists()) {
+            println "event.json not found in ${sourceDir}"
+            return
+        }
+
+        def packageName = appModule.android.namespace ?: appModule.android.defaultConfig.applicationId
+        def packagePath = packageName.replace('.', '/')
+        def outputDir = file("${appModule.projectDir}/src/main/java/${packagePath}")
+        def outputFile = new File(outputDir, "EventConstants.java")
+
+        // 检查文件是否已存在
+        if (outputFile.exists()) {
+            println "EventConstants.java already exists at ${outputFile}, skipping generation"
+            return
+        }
+
+        def jsonContent = eventJsonFile.text
+        def events = new groovy.json.JsonSlurper().parseText(jsonContent)
+
+        def javaCode = new StringBuilder()
+        javaCode.append("package ${packageName};\n\n")
+        javaCode.append("/**\n")
+        javaCode.append(" * Event constants class that contains all event names from event.json\n")
+        javaCode.append(" * This file is auto-generated. Do not modify manually.\n")
+        javaCode.append(" */\n")
+        javaCode.append("public class EventConstants {\n")
+
+        events.each { event ->
+            def eventName = event.eventName
+            def constantName = eventName.toUpperCase().replaceAll("[^A-Z0-9]", "_")
+
+            javaCode.append("\n    /**\n")
+            javaCode.append("     * ${eventName} event name\n")
+            javaCode.append("     */\n")
+            javaCode.append("    public static final String ${constantName} = \"${eventName}\";\n")
+        }
+
+        javaCode.append("}\n")
+
+        outputFile.parentFile.mkdirs()
+        outputFile.text = javaCode.toString()
+        println "Generated EventConstants.java at ${outputFile}"
+    }
+}
+tasks.whenTaskAdded { task ->
+    if (task.name == 'preBuild') {
+        task.dependsOn generateEventConstants
+    }
+}
+
+// Also run during configuration
+afterEvaluate {
+    tasks.named('preBuild').configure {
+        dependsOn generateEventConstants
+    }
+}
