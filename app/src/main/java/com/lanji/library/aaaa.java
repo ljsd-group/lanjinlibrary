@@ -7,10 +7,11 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.lanji.annotation.EventAnnotation;
 import com.lanji.mylibrary.base.NormalActivity;
 import com.lanji.mylibrary.inject.ViewInject;
 import com.lanji.mylibrary.utils.LogUtils;
-
+@EventAnnotation(jsonPath = "event.json")
 public class aaaa extends NormalActivity {
     @ViewInject(R.id.text)
     TextView textViewl;
