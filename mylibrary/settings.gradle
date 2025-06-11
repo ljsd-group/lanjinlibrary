@@ -20,8 +20,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "lanjinlibrary"
-include 'app'
-include ':mylibrary'
+rootProject.name = "mylibrary"
 include ':annotation'
 include ':compiler'
