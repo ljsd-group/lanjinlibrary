@@ -102,7 +102,7 @@ public class EventProcessor extends AbstractProcessor {
             if (element.getKind() == ElementKind.CLASS) {
                 TypeElement typeElement = (TypeElement) element;
                 EventAnnotation annotation = element.getAnnotation(EventAnnotation.class);
-                String jsonPath = annotation.jsonPath();
+                String jsonPath = annotation.value();
                 
                 messager.printMessage(Diagnostic.Kind.NOTE, "Processing class: " + typeElement.getSimpleName() + 
                     " with value: "  + ", jsonPath: " + jsonPath);

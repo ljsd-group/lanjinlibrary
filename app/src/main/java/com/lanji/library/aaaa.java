@@ -11,7 +11,7 @@ import com.lanji.annotation.EventAnnotation;
 import com.lanji.mylibrary.base.NormalActivity;
 import com.lanji.mylibrary.inject.ViewInject;
 import com.lanji.mylibrary.utils.LogUtils;
-@EventAnnotation(jsonPath = "event.json")
+@EventAnnotation()
 public class aaaa extends NormalActivity {
     @ViewInject(R.id.text)
     TextView textViewl;
