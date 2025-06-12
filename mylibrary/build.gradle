@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     id 'maven-publish'
-    id 'kotlin-kapt'
 }
 
 android {
@@ -28,13 +27,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '11'
-    }
-}
-kapt {
-    arguments {
-        arg("projectDir", project.projectDir.absolutePath)
-        arg("kapt.verbose", "true")
-        arg("kapt.use.worker.api", "false")
     }
 }
 dependencies {
@@ -63,8 +55,6 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.9.0'
 
 
-    api project(':annotation')
-    kapt project(':compiler')
 
 }
 publishing {
