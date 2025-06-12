@@ -66,6 +66,6 @@ dependencies {
     debugImplementation libs.androidx.ui.tooling
     debugImplementation libs.androidx.ui.test.manifest
 
-    api project(':annotation')
-    kapt project(':compiler')
+    implementation project(':annotation')
+    annotationProcessor  project(':compiler')
 }
