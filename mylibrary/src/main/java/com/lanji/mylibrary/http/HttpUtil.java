@@ -49,6 +49,7 @@ public class HttpUtil {
                         if (callBack != null) callBack.onError("code=" + model.code);
                     }
                 } else {
+                    LogUtils.i("response is no isSuccessful");
                     if (isToask && mContext != null) {
                         Toast.makeText(mContext, "http is no isSuccessful " + response.code(), Toast.LENGTH_SHORT).show();
                     }
@@ -59,6 +60,7 @@ public class HttpUtil {
 
             @Override
             public void onFailure(@NonNull Call call, @NonNull Throwable t) {
+                LogUtils.i("onFailure:"+call.request().url()+","+t.getMessage());
                 if (isToask && mContext != null) {
                     Toast.makeText(mContext, "http onFailure " + t.toString(), Toast.LENGTH_SHORT).show();
                 }
