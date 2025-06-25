@@ -8,26 +8,32 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.lanji.annotation.EventAnnotation;
+import com.lanji.mylibrary.base.BaseListActivity;
 import com.lanji.mylibrary.base.NormalActivity;
 import com.lanji.mylibrary.inject.ViewInject;
 import com.lanji.mylibrary.utils.LogUtils;
 @EventAnnotation()
-public class aaaa extends NormalActivity {
-    @ViewInject(R.id.text)
-    TextView textViewl;
+public class aaaa extends BaseListActivity {
+//    @ViewInject(R.id.text)
+//    TextView textViewl;
+//
+//    @Override
+//    public void addViewIntoContent(Bundle bundle) {
+//        addView(R.layout.aaaa);
+//        textViewl.setText("ddddddd");
+//        LogUtils.i("ssss"+(mContext==null));
+//showProgressBar();
+//
+//        FragmentManager fManager = getSupportFragmentManager();
+//        FragmentTransaction transaction = fManager.beginTransaction();
+//        bbb v = new bbb();
+//        transaction.add(R.id.fragment1, v);
+//        transaction.commitAllowingStateLoss();
+//    }
 
     @Override
-    public void addViewIntoContent(Bundle bundle) {
-        addView(R.layout.aaaa);
-        textViewl.setText("ddddddd");
-        LogUtils.i("ssss"+(mContext==null));
-showProgressBar();
+    public void OnCreate() {
 
-        FragmentManager fManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fManager.beginTransaction();
-        bbb v = new bbb();
-        transaction.add(R.id.fragment1, v);
-        transaction.commitAllowingStateLoss();
     }
     //    @Override
 //    public int getLayoutId() {
