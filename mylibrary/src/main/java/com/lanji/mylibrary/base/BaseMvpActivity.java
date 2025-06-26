@@ -2,10 +2,6 @@ package com.lanji.mylibrary.base;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.lanji.mylibrary.http.BaseModel;
-import com.lanji.mylibrary.mvp.BaseMvpView;
 import com.lanji.mylibrary.mvp.BasePresenter;
 import com.lanji.mylibrary.mvp.PresenterDispatch;
 import com.lanji.mylibrary.mvp.PresenterProviders;
@@ -19,7 +15,7 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends NormalAct
 
     @Override
     public void addViewIntoContent(Bundle bundle) {
-        addView(getContentView());
+        addView(getLayout());
         mPresenterProviders = PresenterProviders.inject(this);
         mPresenterDispatch = new PresenterDispatch(mPresenterProviders);
 
@@ -34,7 +30,7 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends NormalAct
 //    }
 
 
-    protected abstract int getContentView();
+    protected abstract int getLayout();
 
     public abstract void init();
 

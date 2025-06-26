@@ -9,6 +9,6 @@ import com.lanji.mylibrary.mvp.BasePresenter;
  * create by lzx
  * time:2018/7/27
  */
-public interface LoginView<T> extends BaseMvpView<T>{
-    void loginSuccess();
+public interface LoginView<T> extends BaseMvpView{
+    void loginSuccess(T t);
 }

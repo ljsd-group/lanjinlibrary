@@ -12,9 +12,8 @@ import com.lanji.mylibrary.mvp.BasePresenter;
 public class LoginPresenter extends BasePresenter<LoginView<BaseModel>> {
 
     public void login() {
-        mView.loginSuccess();
         User baseModel=new User();
         baseModel.message="1111";
-        mView.onSuccess(baseModel);
+        mView.loginSuccess(baseModel);
     }
 }

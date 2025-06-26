@@ -3,14 +3,14 @@ package com.lanji.library.aaa;
 
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.lanji.library.R;
+import com.lanji.library.bbb;
 import com.lanji.library.login.LoginPresenter;
 import com.lanji.library.login.LoginView;
 import com.lanji.mylibrary.base.BaseMvpActivity;
-import com.lanji.mylibrary.http.BaseModel;
-import com.lanji.mylibrary.mvp.BaseMvpView;
 import com.lanji.mylibrary.mvp.CreatePresenter;
 
 
@@ -21,20 +21,25 @@ import com.lanji.mylibrary.mvp.CreatePresenter;
 public  class ExampleActivity2 extends BaseMvpActivity<LoginPresenter> implements LoginView<User> {
 
     @Override
-    protected int getContentView() {
+    protected int getLayout() {
         return R.layout.aaaa;
     }
 
     @Override
     public void init() {
+                FragmentManager fManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fManager.beginTransaction();
+        bbb v = new bbb();
+        transaction.add(R.id.fragment1, v);
+        transaction.commitAllowingStateLoss();
         LoginPresenter mLoginPresenter = getPresenter();
 
         mLoginPresenter.login();
     }
 
     @Override
-    public void loginSuccess() {
-        Log.i("ExampleActivity1", "登陆成功");
+    public void loginSuccess(User model) {
+        Log.i("model", model.toString());
     }
 
     @Override
@@ -44,16 +49,6 @@ public  class ExampleActivity2 extends BaseMvpActivity<LoginPresenter> implement
 
     @Override
     public void closePDialog() {
-
-    }
-
-    @Override
-    public void onSuccess(User model) {
-        Log.i("model", model.toString());
-    }
-
-    @Override
-    public void onError(String error) {
 
     }
 }
