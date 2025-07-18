@@ -106,7 +106,7 @@ public abstract class NormalFragment extends Fragment {
 
     public void showProgressBar(int tips) {
         mLayoutProgressBar.setVisibility(VISIBLE);
-        mTextLoading.setText(ContextCompat.getString(mContext, tips));
+        mTextLoading.setText(getResources().getString(tips));
         if (mTextLoading.getVisibility() == GONE)
             mTextLoading.setVisibility(VISIBLE);
     }

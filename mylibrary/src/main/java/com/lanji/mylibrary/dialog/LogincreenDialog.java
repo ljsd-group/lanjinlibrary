@@ -85,8 +85,8 @@ public class LogincreenDialog extends Dialog implements View.OnClickListener {
         }
 
         TextView mTextPolicy = findViewById(R.id.policy);
-        String mTips = ContextCompat.getString(getContext(), R.string.login_xieyi);
-        String mPolicy = ContextCompat.getString(getContext(), R.string.privacy_policy);
+        String mTips = getContext().getResources().getString(R.string.login_xieyi);
+        String mPolicy = getContext().getResources().getString(R.string.privacy_policy);
         SpannableString spannable = new SpannableString(mTips + mPolicy);
 
 

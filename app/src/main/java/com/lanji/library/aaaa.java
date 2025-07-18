@@ -7,12 +7,10 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.lanji.annotation.EventAnnotation;
 import com.lanji.mylibrary.base.BaseListActivity;
 import com.lanji.mylibrary.base.NormalActivity;
 import com.lanji.mylibrary.inject.ViewInject;
 import com.lanji.mylibrary.utils.LogUtils;
-@EventAnnotation()
 public class aaaa extends BaseListActivity {
 //    @ViewInject(R.id.text)
 //    TextView textViewl;

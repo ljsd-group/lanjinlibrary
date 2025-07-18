@@ -91,7 +91,7 @@ public abstract class NormalActivity extends Base2Activity {
 
     public void setTitle(int stringId) {
         if (stringId > 0)
-            mTextViewTitle.setText(ContextCompat.getString(this, stringId));
+            mTextViewTitle.setText(getResources().getString(stringId));
     }
 
     public void setTitle(String title) {
@@ -111,7 +111,7 @@ public abstract class NormalActivity extends Base2Activity {
 
     public void setLeftText(int stringId) {
         if (mTextViewLeft != null) {
-            mTextViewLeft.setText(ContextCompat.getString(this, stringId));
+            mTextViewLeft.setText(getResources().getString(stringId));
             mTextViewLeft.setVisibility(VISIBLE);
         }
     }
@@ -145,7 +145,7 @@ public abstract class NormalActivity extends Base2Activity {
 
     public void showProgressBar(int tips) {
         mLayoutProgressBar.setVisibility(VISIBLE);
-        mTextLoading.setText(ContextCompat.getString(this, tips));
+        mTextLoading.setText(getResources().getString(tips));
         if (mTextLoading.getVisibility() == GONE)
             mTextLoading.setVisibility(VISIBLE);
     }
